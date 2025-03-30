@@ -1,0 +1,135 @@
+.fence-app {
+    font-family: Arial, sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.controls {
+    margin-bottom: 20px;
+}
+
+.control-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.control-group label {
+    font-weight: bold;
+    min-width: 80px;
+}
+
+.segment-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.segment-control {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #f5f5f5;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.segment-control label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: normal;
+}
+
+input, select {
+    padding: 8px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 120px;
+}
+
+.fence-display-container {
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.fence-display {
+    border: 1px solid #eee;
+    padding: 20px;
+    background-color: #f9f9f9;
+    width: 100%;
+    max-width: 1000px;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+svg {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    margin: 0 auto;
+}
+
+.specs {
+    background-color: #f0f0f0;
+    padding: 15px;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.specs p {
+    margin: 5px 0;
+}
+
+/* 栅栏样式 */
+.fence-base {
+    stroke: #333;
+    stroke-width: 2px;
+}
+
+.fence-picket {
+    fill: #8B4513;
+    stroke: #654321;
+    stroke-width: 1px;
+    rx: 2px;
+    ry: 2px;
+}
+
+.fence-rail {
+    fill: #A0522D;
+    stroke: #654321;
+    stroke-width: 1px;
+}
+
+/* 门样式 */
+.gate-post {
+    fill: #555;
+    stroke: #333;
+    stroke-width: 1.5px;
+}
+
+.gate-frame {
+    fill: #708090;
+    stroke: #2F4F4F;
+    stroke-width: 2px;
+}
+
+.gate-brace {
+    stroke: #2F4F4F;
+    stroke-width: 3px;
+    stroke-linecap: round;
+}
+
+.gate-handle {
+    fill: #C0C0C0;
+    stroke: #808080;
+    stroke-width: 1px;
+}
