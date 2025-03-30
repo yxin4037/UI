@@ -206,7 +206,7 @@ const FenceDesign = () => {
             <h2>Fence Design</h2>
             <div className="controls">
                 <div className="control-group">
-                    <label>Number of Gate:</label>
+                    <label>Number of Gates:</label>
                     <select
                         value={gateCount}
                         onChange={(e) => setGateCount(Number(e.target.value))}
