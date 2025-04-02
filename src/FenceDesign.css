@@ -133,3 +133,12 @@ svg {
     stroke: #808080;
     stroke-width: 1px;
 }
+
+/* 最长段显示样式 */
+.specs .longest-segment {
+    color: #2F4F4F;
+    font-weight: bold;
+    margin-top: 8px;
+    padding: 4px 0;
+    border-top: 1px dashed #A0522D;
+}

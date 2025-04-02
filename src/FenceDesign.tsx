@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import * as d3 from "d3";
 import "./FenceDesign.css";
-
+import { internalOptions, boundaryOptions, gateOptions } from "./data";
 type FenceSegment = {
     id: number;
     length: number; // in mm
@@ -15,13 +15,21 @@ const FenceDesign = () => {
     // 固定参数 (mm)
     const GATE_WIDTH = 1200; // 1.2m = 1200mm
     const POST_WIDTH = 100;  // 0.1m = 100mm
-    const MIN_SEGMENT = 1000; // 1m = 1000mm (最小段长度)
+    const MIN_SEGMENT = 0; // 1m = 1000mm (最小段长度)
     const MAX_TOTAL_LENGTH = 30000; // 30m = 30000mm (最大总长度)
     const SVG_HEIGHT = 300;
     const BASE_SCALE = 1.0; // 基础比例 1.0px/mm (放大显示比例)
     const PICKET_WIDTH = 50; // 栅栏板条宽度
     const PICKET_GAP = 100; // 栅栏板条间距
 
+    const [boundary, setBoundary] = useState<string>("90 x 90");
+    const [gate, setGate] = useState<string>("200 x 200");
+    const [internal, setInternal] = useState<string>("50 x 75"); const handleBoundaryChange = (event: React.ChangeEvent<HTMLSelectElement>) =>
+        setBoundary(event.target.value);
+    const handleGateChange = (event: React.ChangeEvent<HTMLSelectElement>) =>
+        setGate(event.target.value);
+    const handleInternalChange = (event: React.ChangeEvent<HTMLSelectElement>) =>
+        setInternal(event.target.value);
     // 初始化围栏段
     useEffect(() => {
         const segments: FenceSegment[] = [];
@@ -250,7 +258,48 @@ const FenceDesign = () => {
                 {gateCount > 0 && (
                     <p>Total fence length: {fenceSegments.reduce((sum, s) => sum + s.length, 0)} mm</p >
                 )}
+                <p className="longest-segment">
+                    Longest segment: {Math.max(...fenceSegments.map(s => s.length || 0))} mm (
+                    {(Math.max(...fenceSegments.map(s => s.length || 0)) / 1000).toFixed(3)}m)
+                </p >
             </div>
+
+            <h3>Post Dimensions (mm)</h3>
+            <div className="grid">
+                <div className="input-row">
+                    <label>Boundary:</label>
+                    <select value={boundary} onChange={handleBoundaryChange}>
+                        {boundaryOptions.map((option) => (
+                            <option key={option} value={option}>
+                                {option}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+
+                <div className="input-row">
+                    <label>Gate:</label>
+                    <select value={gate} onChange={handleGateChange}>
+                        {gateOptions.map((option) => (
+                            <option key={option} value={option}>
+                                {option}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+
+                <div className="input-row">
+                    <label>Internal:</label>
+                    <select value={internal} onChange={handleInternalChange}>
+                        {internalOptions.map((option) => (
+                            <option key={option} value={option}>
+                                {option}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+            </div>
+
         </div>
     );
 };
